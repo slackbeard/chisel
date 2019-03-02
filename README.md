@@ -26,16 +26,16 @@ and creases:
 
 ### Controls
 
-**Move Mouse Left/Right:** Width decrease/increase
+**Move Mouse Right/Left:** Width increase/decrease
 
 **Move Mouse Up/Down:** Length increase/decrease(by moving the end points outward/inward)
 
-**Scroll Mouse Wheel Up/Down:** Depth increase/decrease
+**Scroll Mouse Wheel Down/Up:** Depth increase/decrease
 
 **Left Click:** Finished
 
 **Right Click:** Cancel
 
-**X:** Lock all but Width
+**X:** Only change Width
 
-**Y:** Lock all but Length
+**Y:** Only change Length
