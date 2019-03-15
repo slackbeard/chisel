@@ -3,7 +3,10 @@ import bpy, bmesh
 import pprint
 from bpy.props import FloatProperty
 from mathutils import Vector
-
+bl_info = {
+    "name": "Chisel",
+    "category": "Object",
+}
 class ChiselOperator(bpy.types.Operator):
     bl_idname = "object.chisel"
     bl_label = "Chisel"
