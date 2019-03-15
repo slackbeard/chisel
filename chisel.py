@@ -95,11 +95,11 @@ class ChiselOperator(bpy.types.Operator):
             segments=2,
             profile=.5,
             vertex_only=False,
-            loop_slide=False
+            loop_slide=True
         )
 
         bmesh.update_edit_mesh(context.object.data)
-    
+
         new_fset = set(bresult['faces'])
         new_eset = set(bresult['edges'])
         new_vset = set(bresult['verts'])
@@ -111,13 +111,15 @@ class ChiselOperator(bpy.types.Operator):
         mergegroups = {}
         for k in endkeyset:
             mergegroups[k] = []
-            for v in new_vset:
-                if v[endkey] == k:
-                    mergegroups[k].append(v)
+            for e in new_eset:                
+                if e.verts[0][endkey] == k and e.verts[1][endkey] == k:
+                    mergegroups[k].append(e)
+
 
         # collapse each endcap to a single vertex:
         for k in mergegroups:
-            mres = bmesh.ops.pointmerge(bm, verts=mergegroups[k], merge_co=old_end_locs[k])
+            if len(mergegroups[k]) > 0:
+                mres = bmesh.ops.collapse(bm, edges=mergegroups[k], uvs=True)
 
         bm.normal_update()   
         bmesh.update_edit_mesh(context.object.data)
