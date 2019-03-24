@@ -39,3 +39,9 @@ and creases:
 **X:** Only change Width
 
 **Y:** Only change Length
+
+### Known Issues:
+
+* For very small geometry, the newly created edges will overshoot adjacent edges and make a huge mess
+
+* UVs will stretch as you increase the width / length of the chisel
